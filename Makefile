@@ -32,7 +32,7 @@ qemu:
 	& gdb -ex 'target remote localhost:26000'
 
 bochs:
-	bochs -debugger
+	bochs -debugger -rc bochsgdbinit
 
 
 disk : bootloader kernel

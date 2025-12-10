@@ -8,7 +8,9 @@ ${BUILD}:
 	mkdir -p ${BUILD}
 
 $(BUILD)/%.o: %.asm
-	nasm -f bin $< -o $@
+	nasm -f elf $< -F dwarf -g -o $@
+	ld -m elf_i386 -T bootloader.lds $@ -o $@.elf
+	objcopy -O binary $(BUILD)/bootloader.o.elf $@
 
 clean:
 	rm $(BUILD)/*
