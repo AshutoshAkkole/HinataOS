@@ -1,0 +1,13 @@
+set disassembly-flavor intel
+layout asm
+layout reg
+set architecture i8086
+# --- Disable pagination (no "Type <RET> to continue") ---
+set pagination off
+b *0x7c00
+
+# --- Show CS:IP + real-mode physical address when stopping ---
+define hook-stop
+    printf "[%04x:%04x] ", $cs, $eip
+    x/i $cs*16 + $eip
+end

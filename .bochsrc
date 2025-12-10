@@ -1,0 +1,23 @@
+# CPU and Memory
+megs: 32
+cpu: count=1, ips=10000000 # Increase IPS for faster execution
+
+# ROM BIOS (Paths may vary based on your compile/install)
+romimage: file=/usr/local/share/bochs/BIOS-bochs-latest
+vgaromimage: file=/usr/local/share/bochs/VGABIOS-lgpl-latest
+
+# ******* DISK CONFIGURATION *******
+floppya: 1_44="disk.img", status=inserted
+
+# ******* BOOT ORDER *******
+# Tell the BIOS to boot from the Floppy drive (A)
+boot: floppy
+
+# Log output to a file
+log: bochsout.txt
+
+# GUI debugger
+ display_library: x, options="gui_debug"
+
+# stop for invalid commands
+magic_break: enabled=1
