@@ -23,7 +23,7 @@ mov dh, 0x0  ; head number of floppy disk
 mov dl, 0x0  ; 0=A  means floppy disk 1
 int 0x13     ; BIOS sub-routine read disk/HDD
 
-jmp 0xb0:0x0 ; jump to check if we have got the data there
+jmp [0x500 + 0x18] ; jump to check if we have got the data there
 
 hlt
 

@@ -28,8 +28,7 @@ qemu-real-mode:
         -ex 'set tdesc filename target.xml' \
         -ex 'target remote localhost:1234'
 qemu:
-	qemu-system-i386 -machine q35 -fda disk.img -gdb tcp::26000 -S \
-	& gdb -ex 'target remote localhost:26000'
+	qemu-system-i386 -machine q35 -fda disk.img -gdb tcp::26000 -S
 
 bochs:
 	bochs -debugger -rc bochsgdbinit

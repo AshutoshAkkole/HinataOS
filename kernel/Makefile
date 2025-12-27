@@ -13,7 +13,7 @@ $(OS)/%.o: %.c
 
 
 $(OS): $(OS_OBJS)
-	ld -m elf_i386 -T kernel.lds $(OS_OBJS) -o $(OS_OBJS).elf
+	ld -m elf_i386 -nmagic -T kernel.lds $(OS_OBJS) -o $(OS_OBJS).elf
 
 clean:
 	rm $(OS)/*

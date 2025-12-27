@@ -3,7 +3,8 @@ layout asm
 layout reg
 set architecture i8086
 # --- Disable pagination (no "Type <RET> to continue") ---
-set pagination off
+# set pagination off
+target remote :26000
 b *0x7c00
 
 # --- Show CS:IP + real-mode physical address when stopping ---
