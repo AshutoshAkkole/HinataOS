@@ -1,7 +1,7 @@
 BUILD_PATH = build
 DISK = disk.img
 BOOTLOADER = $(BUILD_PATH)/bootloader/bootloader.o
-KERNEL = $(BUILD_PATH)/kernel/sector2.o
+KERNEL = $(BUILD_PATH)/kernel/kernal_sample.o.elf
 
 
 .PHONY: bootloader kernel disk clean qemu
@@ -38,6 +38,6 @@ bochs:
 disk : bootloader kernel
 	dd if=/dev/zero of=$(DISK) bs=512 count=2880
 	dd if=$(BOOTLOADER) of=$(DISK) bs=512 count=1 seek=0 conv=notrunc
-	dd if=$(KERNEL) of=$(DISK) bs=512 count=1 seek=1 conv=notrunc
+	dd if=$(KERNEL) of=$(DISK) bs=512 count=$$(($(shell stat --printf="%s" $(KERNEL))/512)) seek=1 conv=notrunc
 
 

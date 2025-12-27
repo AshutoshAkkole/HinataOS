@@ -1,14 +1,19 @@
-BUILD = ../build/kernel
-SOURCES = $(wildcard *.asm)
-BINS = $(patsubst %.asm, $(BUILD)/%.o, $(SOURCES))
+BUILD_DIR=../build
+OS=$(BUILD_DIR)/kernel
 
-all: ${BUILD} $(BINS)
+CFLAGS+=-ffreestanding -nostdlib -gdwarf-4 -m32 -ggdb3
 
-${BUILD}:
-	mkdir -p ${BUILD}
+OS_SRCS := $(wildcard *.c)
+OS_OBJS := $(patsubst %.c, $(OS)/%.o, $(OS_SRCS))
 
-$(BUILD)/%.o: %.asm
-	nasm -f bin $< -o $@
+all: $(OS)
+
+$(OS)/%.o: %.c
+	gcc $(CFLAGS) -c $< -o $@
+
+
+$(OS): $(OS_OBJS)
+	ld -m elf_i386 -T kernel.lds $(OS_OBJS) -o $(OS_OBJS).elf
 
 clean:
-	rm $(BUILD)/*
+	rm $(OS)/*
