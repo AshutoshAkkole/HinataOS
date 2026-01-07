@@ -23,7 +23,8 @@ load_kernel:
     ; mode = CHS (cylinder header sector)
     mov ah, 0x2
 
-    mov al, 5  ; read 2 sectors
+    ; TODO Change this approach
+    mov al, 10  ; read 10 sectors (just loaded 10 sectors because lot of code in kernel)
     mov ch, 0x0  ; read track 0
     mov cl, 0x2  ; sector 2 (weired as track is 0 index and sector is 1 due to IBM duffers)
     mov dh, 0x0  ; head number of floppy disk

@@ -1,7 +1,7 @@
 BUILD_PATH = build
 DISK = disk.img
 BOOTLOADER = $(BUILD_PATH)/bootloader/bootloader.o
-KERNEL = $(BUILD_PATH)/kernel/kernal_sample.o.elf
+KERNEL = $(BUILD_PATH)/kernel/kernel_sample.o.elf
 
 
 .PHONY: bootloader kernel disk clean qemu

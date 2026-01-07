@@ -6,6 +6,9 @@ set architecture i8086
 # set pagination off
 target remote :26000
 b *0x7c00
+symbol-file build/kernel/kernel_sample.o.elf
+b big_bang
+layout split
 
 # --- Show CS:IP + real-mode physical address when stopping ---
 define hook-stop
