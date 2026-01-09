@@ -34,6 +34,7 @@ load_kernel:
 
 %include "global_discriptor_table.asm"
 %include "protected_mode.asm"
+%include "interrupt_discriptor_table.asm"
 
 
 hlt

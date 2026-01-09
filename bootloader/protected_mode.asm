@@ -33,5 +33,7 @@ init_protected_mode:
     mov ebp, 0x90000
     mov esp, ebp
 
+    lidt [interrupt_discriptor] 
+
     jmp CODE_SEG:0x600 ; jump to kernel 
 
